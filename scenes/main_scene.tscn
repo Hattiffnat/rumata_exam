@@ -31,6 +31,15 @@ metadata/_edit_horizontal_guides_ = [960.0]
 unique_name_in_owner = true
 script = ExtResource("1_rt2n2")
 
+[node name="DogeBody" parent="." instance=ExtResource("1_0f027")]
+position = Vector2(68, -33)
+
+[node name="Camera2D" type="Camera2D" parent="DogeBody"]
+position = Vector2(-15, -29)
+limit_bottom = 1800
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+
 [node name="world" parent="." instance=ExtResource("3_7ykc4")]
 
 [node name="Abyss" parent="." instance=ExtResource("5_gubc5")]
@@ -99,15 +108,6 @@ position = Vector2(947, 231)
 
 [node name="EnemyBody8" parent="Enemies" instance=ExtResource("2_pw63i")]
 position = Vector2(511, 167)
-
-[node name="DogeBody" parent="." instance=ExtResource("1_0f027")]
-position = Vector2(68, -33)
-
-[node name="Camera2D" type="Camera2D" parent="DogeBody"]
-position = Vector2(-15, -29)
-limit_bottom = 1800
-position_smoothing_enabled = true
-position_smoothing_speed = 2.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
