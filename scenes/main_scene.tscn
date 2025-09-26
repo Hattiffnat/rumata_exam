@@ -1,0 +1,154 @@
+[gd_scene load_steps=11 format=3 uid="uid://cfanppwu3kihb"]
+
+[ext_resource type="PackedScene" uid="uid://d2ekcnb1s0yar" path="res://scenes/doge.tscn" id="1_0f027"]
+[ext_resource type="Script" uid="uid://bnnnb8jy21pxs" path="res://scripts/game_manager.gd" id="1_rt2n2"]
+[ext_resource type="PackedScene" uid="uid://c5t3gf4e1vejt" path="res://scenes/enemy.tscn" id="2_pw63i"]
+[ext_resource type="PackedScene" uid="uid://b8wkbon7tx2ba" path="res://scenes/world.tscn" id="3_7ykc4"]
+[ext_resource type="PackedScene" uid="uid://bnpabxk7q86fw" path="res://scenes/coin.tscn" id="4_pu3yx"]
+[ext_resource type="PackedScene" uid="uid://cj7wt2mp30j3l" path="res://scenes/kill_zone.tscn" id="5_gubc5"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gubc5"]
+
+[sub_resource type="SystemFont" id="SystemFont_rt2n2"]
+hinting = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_c16ls"]
+font = SubResource("SystemFont_rt2n2")
+font_size = 20
+outline_size = 5
+outline_color = Color(0.560784, 0.176471, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rt2n2"]
+font_size = 64
+outline_size = 12
+outline_color = Color(0.866667, 0.733333, 0.0470588, 1)
+
+[node name="Node2D" type="Node2D"]
+metadata/_edit_vertical_guides_ = [1600.0]
+metadata/_edit_horizontal_guides_ = [960.0]
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_rt2n2")
+
+[node name="world" parent="." instance=ExtResource("3_7ykc4")]
+
+[node name="Abyss" parent="." instance=ExtResource("5_gubc5")]
+position = Vector2(3, 1040)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Abyss"]
+shape = SubResource("WorldBoundaryShape2D_gubc5")
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource("4_pu3yx")]
+position = Vector2(239, 234)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("4_pu3yx")]
+position = Vector2(758, 78)
+
+[node name="Coin9" parent="Coins" instance=ExtResource("4_pu3yx")]
+position = Vector2(356, -22)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("4_pu3yx")]
+position = Vector2(202, 389)
+
+[node name="Coin4" parent="Coins" instance=ExtResource("4_pu3yx")]
+position = Vector2(694, 333)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("4_pu3yx")]
+position = Vector2(787, 490)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("4_pu3yx")]
+position = Vector2(1366, 842)
+
+[node name="Coin7" parent="Coins" instance=ExtResource("4_pu3yx")]
+position = Vector2(749, 804)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("4_pu3yx")]
+position = Vector2(1203, 110)
+
+[node name="Coin10" parent="Coins" instance=ExtResource("4_pu3yx")]
+position = Vector2(1376, 139)
+
+[node name="Coin11" parent="Coins" instance=ExtResource("4_pu3yx")]
+position = Vector2(1323, 396)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="EnemyBody" parent="Enemies" instance=ExtResource("2_pw63i")]
+position = Vector2(309, 296)
+
+[node name="EnemyBody2" parent="Enemies" instance=ExtResource("2_pw63i")]
+position = Vector2(252, 771)
+
+[node name="EnemyBody3" parent="Enemies" instance=ExtResource("2_pw63i")]
+position = Vector2(1037, 792)
+
+[node name="EnemyBody4" parent="Enemies" instance=ExtResource("2_pw63i")]
+position = Vector2(1240, 415)
+
+[node name="EnemyBody5" parent="Enemies" instance=ExtResource("2_pw63i")]
+position = Vector2(839, 533)
+
+[node name="EnemyBody6" parent="Enemies" instance=ExtResource("2_pw63i")]
+position = Vector2(611, 258)
+
+[node name="EnemyBody7" parent="Enemies" instance=ExtResource("2_pw63i")]
+position = Vector2(947, 231)
+
+[node name="EnemyBody8" parent="Enemies" instance=ExtResource("2_pw63i")]
+position = Vector2(511, 167)
+
+[node name="DogeBody" parent="." instance=ExtResource("1_0f027")]
+position = Vector2(68, -33)
+
+[node name="Camera2D" type="Camera2D" parent="DogeBody"]
+position = Vector2(-15, -29)
+limit_bottom = 1800
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="score" type="Label" parent="CanvasLayer"]
+offset_left = 20.0
+offset_top = 17.0
+offset_right = 73.0
+offset_bottom = 45.0
+text = "0 / 10"
+label_settings = SubResource("LabelSettings_c16ls")
+
+[node name="win" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.5
+offset_top = -44.0
+offset_right = 99.5
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "!  YOU WIN  !"
+label_settings = SubResource("LabelSettings_rt2n2")
+horizontal_alignment = 1
+
+[node name="game_over" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.5
+offset_top = -44.0
+offset_right = 99.5
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "!  YOU WIN  !"
+label_settings = SubResource("LabelSettings_rt2n2")
+horizontal_alignment = 1

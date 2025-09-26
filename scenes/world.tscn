@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8wkbon7tx2ba"]
+
+[ext_resource type="Script" uid="uid://bj5mtjny007gt" path="res://scripts/proc_gen_world.gd" id="1_6i37q"]
+[ext_resource type="TileSet" uid="uid://duxh1kge6aqu2" path="res://tileset.tres" id="2_5m1jv"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rwgxs"]
+frequency = 0.1166
+fractal_lacunarity = 1.99
+fractal_gain = 0.46
+fractal_weighted_strength = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ux0xx"]
+noise = SubResource("FastNoiseLite_rwgxs")
+
+[sub_resource type="Gradient" id="Gradient_7ykc4"]
+colors = PackedColorArray(0.00167803, 0.199115, 0.760306, 1, 0.860369, 0.860369, 0.860369, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pu3yx"]
+noise_type = 3
+frequency = 0.0238
+fractal_octaves = 8
+fractal_lacunarity = 3.105
+fractal_gain = 0.315
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rwgxs"]
+color_ramp = SubResource("Gradient_7ykc4")
+noise = SubResource("FastNoiseLite_pu3yx")
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_6i37q")
+noise_height_texture = SubResource("NoiseTexture2D_ux0xx")
+
+[node name="sky" type="Sprite2D" parent="."]
+position = Vector2(1492, 502)
+scale = Vector2(12.96, 12.96)
+texture = SubResource("NoiseTexture2D_rwgxs")
+
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="grass" type="TileMapLayer" parent="Tiles"]
+tile_set = ExtResource("2_5m1jv")
