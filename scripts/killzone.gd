@@ -1,8 +1,11 @@
 extends Area2D
 
+signal GameOver
+
 @onready var timer = $Timer
 
 func _on_body_entered(body: Node2D) -> void:
+	GameOver.emit()
 	body.velocity.y = -300.0
 	
 	var body_colision : CollisionShape2D = body.get_node("CollisionShape2D")

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="rumata_games_exam"
 run/main_scene="uid://cfanppwu3kihb"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [input]

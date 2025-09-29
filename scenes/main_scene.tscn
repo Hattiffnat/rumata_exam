@@ -20,8 +20,9 @@ outline_color = Color(0.560784, 0.176471, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rt2n2"]
 font_size = 64
-outline_size = 12
-outline_color = Color(0.866667, 0.733333, 0.0470588, 1)
+font_color = Color(0, 0, 0, 1)
+outline_size = 7
+outline_color = Color(0.953578, 0.000396718, 0.0568598, 1)
 
 [node name="Node2D" type="Node2D"]
 metadata/_edit_vertical_guides_ = [1600.0]
@@ -31,6 +32,8 @@ metadata/_edit_horizontal_guides_ = [960.0]
 unique_name_in_owner = true
 script = ExtResource("1_rt2n2")
 
+[node name="world" parent="." instance=ExtResource("3_7ykc4")]
+
 [node name="DogeBody" parent="." instance=ExtResource("1_0f027")]
 position = Vector2(68, -33)
 
@@ -39,8 +42,6 @@ position = Vector2(-15, -29)
 limit_bottom = 1800
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
-
-[node name="world" parent="." instance=ExtResource("3_7ykc4")]
 
 [node name="Abyss" parent="." instance=ExtResource("5_gubc5")]
 position = Vector2(3, 1040)
@@ -149,6 +150,6 @@ offset_right = 99.5
 offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "!  YOU WIN  !"
+text = "GAME OVER"
 label_settings = SubResource("LabelSettings_rt2n2")
 horizontal_alignment = 1
