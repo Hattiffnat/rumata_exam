@@ -36,6 +36,4 @@ func generate_world():
 			# По пороговому значению ставим тот или иной тайл
 			if noise_val > 0.5 :
 				grass_layer.set_cell(Vector2i(x, y), source_id, grass_co)
-				
-	print(noise_min, ' ', noise_max)
 	
